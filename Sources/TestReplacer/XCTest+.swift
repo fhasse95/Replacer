@@ -13,8 +13,8 @@ import XCTest
 extension XCTest {
 
     private static let swizzleTearDown: Void = {
-        let tearDown = class_getInstanceMethod(XCTest.self, #selector(XCTest.tearDown))!
-        let replacerTearDown = class_getInstanceMethod(XCTestCase.self, #selector(XCTest.autoResetTearDown))!
+        let tearDown = class_getInstanceMethod(XCTest.self, #selector(XCTestCase.tearDown))!
+        let replacerTearDown = class_getInstanceMethod(XCTest.self, #selector(XCTest.autoResetTearDown))!
         method_exchangeImplementations(tearDown, replacerTearDown)
     }()
 
